@@ -44,8 +44,11 @@ The discussion is documented [here](https://github.com/maxheld83/ghaction-ghpage
 
 ## Environment Variables
 
-Just `BUILD_DIR`, the build directory relative to your repository root.
+`BUILD_DIR`, the build directory relative to your repository root.
 You can also pass `.` if you want to push your repository root.
+
+`BRANCH`, the branch relative to your repository root.
+Default is `main`
 
 
 ## Example Usage
@@ -53,7 +56,7 @@ You can also pass `.` if you want to push your repository root.
 ```yaml
 name: Deployment
 
-"on":
+on:
   - push
   - pull_request
 
@@ -67,4 +70,5 @@ jobs:
         env:
           BUILD_DIR: public/
           GH_PAT: ${{ secrets.GH_PAT }}
+          BRANCH: main
 ```
