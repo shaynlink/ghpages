@@ -12,8 +12,11 @@ REMOTE_REPO="https://${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git" && \
 REPONAME="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 2)" && \
 OWNER="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 1)" && \
 GHIO="${OWNER}.github.io" && \
+if [[ -z $BRANCH ]]; then
+  $BRANCH="main"
+fi &&
 if [[ "$REPONAME" == "$GHIO" ]]; then
-  REMOTE_BRANCH="master"
+  REMOTE_BRANCH=$BRANCH
 else
   REMOTE_BRANCH="gh-pages"
 fi && \
